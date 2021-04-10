@@ -36,6 +36,8 @@ public abstract class AbstractExternalOAuthIdentityProviderDefinition<T extends 
     private String relyingPartySecret;
     private List<String> scopes;
     private String issuer;
+
+    private XOAuthIssuerValidationMode issuerValidationMode = XOAuthIssuerValidationMode.STRICT;
     private String responseType = "code";
     private String userPropagationParameter;
 
@@ -145,6 +147,13 @@ public abstract class AbstractExternalOAuthIdentityProviderDefinition<T extends 
 
     public T setIssuer(String issuer) {
         this.issuer = issuer;
+        return (T) this;
+    }
+
+    public XOAuthIssuerValidationMode getIssuerValidationMode() { return issuerValidationMode; }
+
+    public T setIssuerValidationMode(XOAuthIssuerValidationMode issuerValidationMode) {
+        this.issuerValidationMode = issuerValidationMode;
         return (T) this;
     }
 
